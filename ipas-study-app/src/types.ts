@@ -34,6 +34,7 @@ export interface Subject {
 
 export type SummaryBlock =
   | { type: 'text'; content: string }
+  | { type: 'heading'; text: string }
   | { type: 'keypoints'; items: string[] }
   | { type: 'table'; headers: string[]; rows: string[][] }
   | { type: 'image'; svg: string; caption?: string }

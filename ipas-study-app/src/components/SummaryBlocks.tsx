@@ -5,6 +5,7 @@ export function SummaryBlocks({ blocks }: { blocks: SummaryBlock[] }) {
     <div className="space-y-4">
       {blocks.map((b, i) => {
         if (b.type === 'text') return <p key={i} className="leading-7">{b.content}</p>
+        if (b.type === 'heading') return <h3 key={i} className="font-semibold text-base mt-3 text-gray-800">{b.text}</h3>
         if (b.type === 'keypoints')
           return <ul key={i} className="list-disc pl-5 space-y-1">{b.items.map((it, j) => <li key={j}>{it}</li>)}</ul>
         if (b.type === 'table')
