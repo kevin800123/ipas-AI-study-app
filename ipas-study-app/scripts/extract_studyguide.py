@@ -45,6 +45,8 @@ CHAPTER_HDR_RE = re.compile(r"第([一二三四五六七八九十]+)章\s*(\S[^\
 SECTION_RE = re.compile(r"^[3-6]\.\d{1,2}(\s+\S.{0,30})?$")
 HEADING_PREFIX = re.compile(r"^(（\s*\d+\s*）|[A-Za-z][\.\、])")
 BARE_NUM = re.compile(r"^\d{1,2}\.\s*$")
+# standalone numbered sub-section title, e.g. "1. 前言與章節導覽"
+NUMBERED_TITLE = re.compile(r"^\d{1,2}\.\s+\S")
 APPENDIX = re.compile(r"^[A-Z]-\d+$")
 RUNNING_LABEL = re.compile(r"^(重點掃[瞄描]|前言與章節導覽)$")
 
@@ -121,6 +123,10 @@ def build_blocks(lines):
             blocks.append({"type": "heading", "text": s.strip()})
             continue
         if BARE_NUM.match(s):
+            continue
+        if NUMBERED_TITLE.match(s) and len(s) <= 24 and not any(p in s for p in "。，；"):
+            flush()
+            blocks.append({"type": "heading", "text": s.strip()})
             continue
         if HEADING_PREFIX.match(s) and s.endswith("：") and len(s) <= 22:
             flush()
