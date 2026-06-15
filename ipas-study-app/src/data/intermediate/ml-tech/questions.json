@@ -1174,5 +1174,397 @@
     "answer": "B",
     "explanation": "",
     "tags": []
+  },
+  {
+    "id": "IT3-smp-Q001",
+    "level": "intermediate",
+    "subject": "ml-tech",
+    "source": "114-sample",
+    "stem": "在MapReduce 計算框架中，關於Map 和Reduce 所負責處理資料的問題，下列敘述何者正確？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Map：一組資料映射成另一組資料；Reduce：統合與歸納資料"
+      },
+      {
+        "key": "B",
+        "text": "Map：地圖式的搜索資料；Reduce：統合與歸納資料"
+      },
+      {
+        "key": "C",
+        "text": "Map：一組資料映射成另一組資料；Reduce：過濾不符合的資料"
+      },
+      {
+        "key": "D",
+        "text": "Map：一組資料映射成另一組資料；Reduce：生成更多的資料"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT3-smp-Q002",
+    "level": "intermediate",
+    "subject": "ml-tech",
+    "source": "114-sample",
+    "stem": "下列何種卷積神經網路（Convolution Neural Networks, CNN）是將卷積層加寬而非加深？",
+    "options": [
+      {
+        "key": "A",
+        "text": "R-CNN"
+      },
+      {
+        "key": "B",
+        "text": "Inception"
+      },
+      {
+        "key": "C",
+        "text": "ResNet"
+      },
+      {
+        "key": "D",
+        "text": "VGG19"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT3-smp-Q003",
+    "level": "intermediate",
+    "subject": "ml-tech",
+    "source": "114-sample",
+    "stem": "當模型的訓練誤差（Training Error）低、但測試誤差（Test Error）很大時，這通常是在訓練過程中產生下列哪一種情況？",
+    "options": [
+      {
+        "key": "A",
+        "text": "模型的泛化能力強"
+      },
+      {
+        "key": "B",
+        "text": "模型出現過度擬合（Overfitting）"
+      },
+      {
+        "key": "C",
+        "text": "模型出現欠擬合（Underfitting）"
+      },
+      {
+        "key": "D",
+        "text": "訓練資料和測試資料之間沒有相關性"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT3-smp-Q004",
+    "level": "intermediate",
+    "subject": "ml-tech",
+    "source": "114-sample",
+    "stem": "下列哪一種指標通常用於評估迴歸模型的效能？",
+    "options": [
+      {
+        "key": "A",
+        "text": "R²"
+      },
+      {
+        "key": "B",
+        "text": "F1-分數"
+      },
+      {
+        "key": "C",
+        "text": "曲線下面積（AUC）"
+      },
+      {
+        "key": "D",
+        "text": "Precision"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT3-smp-Q005",
+    "level": "intermediate",
+    "subject": "ml-tech",
+    "source": "114-sample",
+    "stem": "近年來，深度學習研究與應用蓬勃發展，但數據本身可能存在什麼潛在問題？",
+    "options": [
+      {
+        "key": "A",
+        "text": "數據標註品質鮮少被討論，但它卻直接影響模型性能"
+      },
+      {
+        "key": "B",
+        "text": "數據品質是完美可信賴的"
+      },
+      {
+        "key": "C",
+        "text": "大部分情況下，數據不存在類別不平衡問題"
+      },
+      {
+        "key": "D",
+        "text": "數據不需要領域知識的輔助"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT3-smp-Q006",
+    "level": "intermediate",
+    "subject": "ml-tech",
+    "source": "114-sample",
+    "stem": "在分類任務中，深度學習模型通常搭配哪一種輸出函數？",
+    "options": [
+      {
+        "key": "A",
+        "text": "Tanh"
+      },
+      {
+        "key": "B",
+        "text": "ReLU"
+      },
+      {
+        "key": "C",
+        "text": "Sigmoid 或Softmax"
+      },
+      {
+        "key": "D",
+        "text": "Dropout"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT3-smp-Q007",
+    "level": "intermediate",
+    "subject": "ml-tech",
+    "source": "114-sample",
+    "stem": "下列哪一種學習任務不適合使用監督式學習方法處理？",
+    "options": [
+      {
+        "key": "A",
+        "text": "客戶信用風險分類"
+      },
+      {
+        "key": "B",
+        "text": "預測未來銷售額"
+      },
+      {
+        "key": "C",
+        "text": "找出資料中的潛在群集"
+      },
+      {
+        "key": "D",
+        "text": "判斷影像是否為貓或狗"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT3-smp-Q008",
+    "level": "intermediate",
+    "subject": "ml-tech",
+    "source": "114-sample",
+    "stem": "在神經網路中，前向傳播（Forward Propagation）主要依賴下列哪一種數學操作？",
+    "options": [
+      {
+        "key": "A",
+        "text": "機率積分"
+      },
+      {
+        "key": "B",
+        "text": "矩陣乘法與向量內積"
+      },
+      {
+        "key": "C",
+        "text": "對數變換"
+      },
+      {
+        "key": "D",
+        "text": "條件機率推論"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT3-smp-Q009",
+    "level": "intermediate",
+    "subject": "ml-tech",
+    "source": "114-sample",
+    "stem": "特徵縮放（Feature Scaling）中，下列何者為標準化（Standardization）的主要作用？",
+    "options": [
+      {
+        "key": "A",
+        "text": "將數據範圍限制在0 到1 且標準差-1"
+      },
+      {
+        "key": "B",
+        "text": "使數據平均值為0 且標準差為1"
+      },
+      {
+        "key": "C",
+        "text": "移除數據中的異常值"
+      },
+      {
+        "key": "D",
+        "text": "增加特徵間的相關性"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT3-smp-Q010",
+    "level": "intermediate",
+    "subject": "ml-tech",
+    "source": "114-sample",
+    "stem": "關於準確率（Accuracy）的計算方式，下列何者正確？",
+    "options": [
+      {
+        "key": "A",
+        "text": "TP/（TP+FP）"
+      },
+      {
+        "key": "B",
+        "text": "（TP+TN）/（TP+FP+TN+FN）"
+      },
+      {
+        "key": "C",
+        "text": "TN/（TN+FP）"
+      },
+      {
+        "key": "D",
+        "text": "TP/（TP+FN）"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT3-smp-Q011",
+    "level": "intermediate",
+    "subject": "ml-tech",
+    "source": "114-sample",
+    "stem": "關於損失函數（Loss Function）的主要功能，下列何者正確？",
+    "options": [
+      {
+        "key": "A",
+        "text": "記錄模型預測歷史"
+      },
+      {
+        "key": "B",
+        "text": "計算模型結構複雜度"
+      },
+      {
+        "key": "C",
+        "text": "控制模型的學習率"
+      },
+      {
+        "key": "D",
+        "text": "衡量模型預測與真實值之間的誤差"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT3-smp-Q012",
+    "level": "intermediate",
+    "subject": "ml-tech",
+    "source": "114-sample",
+    "stem": "關於歐盟《一般資料保護規則（GDPR）》，所謂的被遺忘權（Right to be Forgotten）主要賦予資料主體哪一項權利？",
+    "options": [
+      {
+        "key": "A",
+        "text": "要求平台永久備份其個資以防遺失"
+      },
+      {
+        "key": "B",
+        "text": "在符合條件下請求刪除其個人資料"
+      },
+      {
+        "key": "C",
+        "text": "將個人資料轉換為匿名格式保存"
+      },
+      {
+        "key": "D",
+        "text": "限制企業將資料輸出至境外伺服器"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT3-smp-Q013",
+    "level": "intermediate",
+    "subject": "ml-tech",
+    "source": "114-sample",
+    "stem": "在進行模型訓練前，若針對資料中不同群體（例如分類標籤）之間樣本數量不平衡的情況進行比例調整，此方法通常屬於下列哪一種技術？",
+    "options": [
+      {
+        "key": "A",
+        "text": "資料重抽樣"
+      },
+      {
+        "key": "B",
+        "text": "特徵選擇"
+      },
+      {
+        "key": "C",
+        "text": "模型正則化"
+      },
+      {
+        "key": "D",
+        "text": "超參數調整"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT3-smp-Q014",
+    "level": "intermediate",
+    "subject": "ml-tech",
+    "source": "114-sample",
+    "stem": "在優化器中，哪一個方法會自動調整每個參數的學習率，特別適用於稀疏資料？",
+    "options": [
+      {
+        "key": "A",
+        "text": "c → a → b → d"
+      },
+      {
+        "key": "B",
+        "text": "a → c → b → d"
+      },
+      {
+        "key": "C",
+        "text": "c → b → a → d"
+      },
+      {
+        "key": "D",
+        "text": "b → a → c → d"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "tags": []
   }
 ]

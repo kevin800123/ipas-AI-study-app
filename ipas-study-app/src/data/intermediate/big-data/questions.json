@@ -1230,5 +1230,425 @@
     "answer": "D",
     "explanation": "",
     "tags": []
+  },
+  {
+    "id": "IT2-smp-Q001",
+    "level": "intermediate",
+    "subject": "big-data",
+    "source": "114-sample",
+    "stem": "在巨量資料分析班中，共有一年級至四年級，每個年級有50 個學生，且學生身高呈常態分佈。下列敘述何者不正確？",
+    "options": [
+      {
+        "key": "A",
+        "text": "要檢測一年級和二年級的平均身高是否有差異，可以利用t 檢定"
+      },
+      {
+        "key": "B",
+        "text": "要檢測一年級、二年級、三年級之間的平均身高是否有差異，可以利用t 檢定"
+      },
+      {
+        "key": "C",
+        "text": "要檢測二年級、三年級、四年級之間的平均身高是否有差異，可以利用F 檢定"
+      },
+      {
+        "key": "D",
+        "text": "要檢測一年級的平均身高是否等於170 公分，可以利用卡方檢定"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT2-smp-Q002",
+    "level": "intermediate",
+    "subject": "big-data",
+    "source": "114-sample",
+    "stem": "關於接受者操作特徵（ROC）曲線，下列敘述何者正確？",
+    "options": [
+      {
+        "key": "A",
+        "text": "ROC 曲線繪製了真陽性率與假陽性率的關係"
+      },
+      {
+        "key": "B",
+        "text": "ROC 曲線用於評估模型的準確性"
+      },
+      {
+        "key": "C",
+        "text": "ROC 曲線下的面積（AUC-ROC）始終等於1"
+      },
+      {
+        "key": "D",
+        "text": "ROC 曲線只適用於二元分類問題"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT2-smp-Q003",
+    "level": "intermediate",
+    "subject": "big-data",
+    "source": "114-sample",
+    "stem": "下列何者不屬於特徵工程（Feature Engineering）？",
+    "options": [
+      {
+        "key": "A",
+        "text": "轉換（Transformation）"
+      },
+      {
+        "key": "B",
+        "text": "萃取（Extraction）"
+      },
+      {
+        "key": "C",
+        "text": "挑選（Selection）"
+      },
+      {
+        "key": "D",
+        "text": "預測（Prediction）"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT2-smp-Q004",
+    "level": "intermediate",
+    "subject": "big-data",
+    "source": "114-sample",
+    "stem": "拉拉網路商城的老闆擬透過機器學習的方式，利用過往的產品銷售資料，預測下一季的產品銷售數量，以調整現有的庫存水位。下列哪一個類型的模型，比較適合應用在老闆期望的預測目標？",
+    "options": [
+      {
+        "key": "A",
+        "text": "決策樹分類器（Decision Tree Classifier）"
+      },
+      {
+        "key": "B",
+        "text": "K-means 分群（K-means Clustering）"
+      },
+      {
+        "key": "C",
+        "text": "主成份分析（Principal Component Analysis, PCA）"
+      },
+      {
+        "key": "D",
+        "text": "線性迴歸（Linear Regression）"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT2-smp-Q005",
+    "level": "intermediate",
+    "subject": "big-data",
+    "source": "114-sample",
+    "stem": "對於低結構化的文本或圖像資料，下列哪一種特徵工程（Feature Engineering）方法最為適用？",
+    "options": [
+      {
+        "key": "A",
+        "text": "特徵改善（Feature Improvement）"
+      },
+      {
+        "key": "B",
+        "text": "特徵建構（Feature Construction）"
+      },
+      {
+        "key": "C",
+        "text": "特徵學習（Feature Learning）"
+      },
+      {
+        "key": "D",
+        "text": "特徵選擇（Feature Selection）"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT2-smp-Q006",
+    "level": "intermediate",
+    "subject": "big-data",
+    "source": "114-sample",
+    "stem": "下列哪種方法屬於非監督式學習中的降維技術？",
+    "options": [
+      {
+        "key": "A",
+        "text": "K-均值聚類（(K-means）"
+      },
+      {
+        "key": "B",
+        "text": "隨機森林（Random Forest）"
+      },
+      {
+        "key": "C",
+        "text": "支持向量機（SVM）"
+      },
+      {
+        "key": "D",
+        "text": "主成分分析（PCA）"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT2-smp-Q007",
+    "level": "intermediate",
+    "subject": "big-data",
+    "source": "114-sample",
+    "stem": "異常值偵測使用IQR（Interquartile Range）法時，下列哪一種範圍外的數值會被視為異常？",
+    "options": [
+      {
+        "key": "A",
+        "text": "超過Q2 ± 2×IQR"
+      },
+      {
+        "key": "B",
+        "text": "高於Q1 − IQR 或低於Q3 + IQR"
+      },
+      {
+        "key": "C",
+        "text": "高於Q1 − 2×IQR 或低於Q3 + 2×IQR"
+      },
+      {
+        "key": "D",
+        "text": "低於Q1 − 1.5×IQR 或高於Q3 + 1.5×IQR"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT2-smp-Q008",
+    "level": "intermediate",
+    "subject": "big-data",
+    "source": "114-sample",
+    "stem": "差分隱私（Differential Privacy）在數據應用中的目的為何？",
+    "options": [
+      {
+        "key": "A",
+        "text": "添加隨機噪聲掩蓋個體訊息"
+      },
+      {
+        "key": "B",
+        "text": "加密所有數據"
+      },
+      {
+        "key": "C",
+        "text": "移除多數類樣本"
+      },
+      {
+        "key": "D",
+        "text": "提高數據完整性"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT2-smp-Q009",
+    "level": "intermediate",
+    "subject": "big-data",
+    "source": "114-sample",
+    "stem": "若使用主成分分析（PCA）將資料降維至兩個主成分，這表示哪一種情況？",
+    "options": [
+      {
+        "key": "A",
+        "text": "僅保留兩筆樣本資料進行模型訓練"
+      },
+      {
+        "key": "B",
+        "text": "將原始高維資料轉換為兩個主成分表示"
+      },
+      {
+        "key": "C",
+        "text": "每筆資料僅保留兩個原始欄位的數值"
+      },
+      {
+        "key": "D",
+        "text": "模型將限制只能用於分類任務"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT2-smp-Q010",
+    "level": "intermediate",
+    "subject": "big-data",
+    "source": "114-sample",
+    "stem": "假設有一組成績資料呈現常態分配，平均數為70，標準差為10，若某位學生的成績為90，該學生的Z 分數約為多少？",
+    "options": [
+      {
+        "key": "A",
+        "text": "0"
+      },
+      {
+        "key": "B",
+        "text": "1"
+      },
+      {
+        "key": "C",
+        "text": "2"
+      },
+      {
+        "key": "D",
+        "text": "3"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT2-smp-Q011",
+    "level": "intermediate",
+    "subject": "big-data",
+    "source": "114-sample",
+    "stem": "在AI 倫理治理的背景下，「透明性（Transparency）」通常是指什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text": "AI 系統的運算速度公開"
+      },
+      {
+        "key": "B",
+        "text": "AI 系統僅使用公開數據"
+      },
+      {
+        "key": "C",
+        "text": "AI 系統決策流程清晰且可解釋"
+      },
+      {
+        "key": "D",
+        "text": "所有AI 模型都是開源的"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT2-smp-Q012",
+    "level": "intermediate",
+    "subject": "big-data",
+    "source": "114-sample",
+    "stem": "若企業希望即時監控交易異常，應選擇下列哪一類數據處理架構？",
+    "options": [
+      {
+        "key": "A",
+        "text": "批次式資料倉儲"
+      },
+      {
+        "key": "B",
+        "text": "離線式資料湖"
+      },
+      {
+        "key": "C",
+        "text": "串流處理系統"
+      },
+      {
+        "key": "D",
+        "text": "冷資料備援架構"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT2-smp-Q013",
+    "level": "intermediate",
+    "subject": "big-data",
+    "source": "114-sample",
+    "stem": "為了分析社群網路使用者之間的互動結構，應使用下列哪種分析方法？",
+    "options": [
+      {
+        "key": "A",
+        "text": "文字探勘"
+      },
+      {
+        "key": "B",
+        "text": "主成分分析"
+      },
+      {
+        "key": "C",
+        "text": "圖論分析"
+      },
+      {
+        "key": "D",
+        "text": "分群分析"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT2-smp-Q014",
+    "level": "intermediate",
+    "subject": "big-data",
+    "source": "114-sample",
+    "stem": "為了加速大數據環境下的 AI 模型訓練，以下哪一項為常見技術？",
+    "options": [
+      {
+        "key": "A",
+        "text": "早期停止（Early Stopping）"
+      },
+      {
+        "key": "B",
+        "text": "批次分群（Mini-batching）"
+      },
+      {
+        "key": "C",
+        "text": "混合精度訓練（Mixed Precision Training）"
+      },
+      {
+        "key": "D",
+        "text": "主成分分析（PCA）"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT2-smp-Q015",
+    "level": "intermediate",
+    "subject": "big-data",
+    "source": "114-sample",
+    "stem": "考慮使用CIFAR-10 資料集進行資料處理，資料包括32×32 像素的多筆彩色照片。下列程式碼的資料處理，請選出正確的選項。",
+    "options": [
+      {
+        "key": "A",
+        "text": "訓練集(x_train)資料集個數為100000 筆"
+      },
+      {
+        "key": "B",
+        "text": "測試集(x_test)資料集個數為10000 筆"
+      },
+      {
+        "key": "C",
+        "text": "訓練集(x_train)是Pandas 資料框(DataFrame)物件"
+      },
+      {
+        "key": "D",
+        "text": "如果希望將訓練集(x_train)像素值轉換為[0, 1]的範圍，則可以輸入：x_train = x_train.astype('int32') / 255.0"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "tags": []
   }
 ]

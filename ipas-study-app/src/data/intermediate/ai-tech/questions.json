@@ -1398,5 +1398,397 @@
     "answer": "C",
     "explanation": "",
     "tags": []
+  },
+  {
+    "id": "IT1-smp-Q001",
+    "level": "intermediate",
+    "subject": "ai-tech",
+    "source": "114-sample",
+    "stem": "下列何者並未使用人工智慧（AI）或機器學習（ML）技術？",
+    "options": [
+      {
+        "key": "A",
+        "text": "使用一組預定義規則來確定最佳移動做法的象棋遊戲"
+      },
+      {
+        "key": "B",
+        "text": "使用深度神經網路來提高其準確性的語音識別系統"
+      },
+      {
+        "key": "C",
+        "text": "使用感測器和預定義的自動駕駛汽車-定義導航規則"
+      },
+      {
+        "key": "D",
+        "text": "使用自然語言處理算法來理解和反應用戶查詢的聊天機器人"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT1-smp-Q002",
+    "level": "intermediate",
+    "subject": "ai-tech",
+    "source": "114-sample",
+    "stem": "在文本資料處理過程中，通常會需要「將接續的文本轉換為詞彙單位」，以便後續的處理。請問上述所指的是文本資料處理中的哪一個方法？",
+    "options": [
+      {
+        "key": "A",
+        "text": "詞形還原（Lemmatization）"
+      },
+      {
+        "key": "B",
+        "text": "停用詞移除（Stopword Removal）"
+      },
+      {
+        "key": "C",
+        "text": "斷詞（Tokenization）"
+      },
+      {
+        "key": "D",
+        "text": "詞頻- 逆向文件頻率（Term Frequency-Inverse Document Frequency, TF-IDF）"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT1-smp-Q003",
+    "level": "intermediate",
+    "subject": "ai-tech",
+    "source": "114-sample",
+    "stem": "下列何者為自然語言處理（NLP）在機器學習應用中的主要用途？",
+    "options": [
+      {
+        "key": "A",
+        "text": "情緒分析"
+      },
+      {
+        "key": "B",
+        "text": "圖像識別"
+      },
+      {
+        "key": "C",
+        "text": "預測性維護"
+      },
+      {
+        "key": "D",
+        "text": "供應鏈優化"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT1-smp-Q004",
+    "level": "intermediate",
+    "subject": "ai-tech",
+    "source": "114-sample",
+    "stem": "關於深度學習模型，下列敘述何者不正確？",
+    "options": [
+      {
+        "key": "A",
+        "text": "卷積神經網路（Convolutional Neural Networks）適合影像辨識"
+      },
+      {
+        "key": "B",
+        "text": "ReLU（Rectified Linear Unit）比tanh 和Sigmoid 好，因為ReLU可以減緩梯度爆炸與消失的現象"
+      },
+      {
+        "key": "C",
+        "text": "遞迴神經網路（Recurrent Neural Networks）適合處理序列相關資料"
+      },
+      {
+        "key": "D",
+        "text": "Elman 神經網路（Elman Neural Networks）適合處理影像辨識"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT1-smp-Q005",
+    "level": "intermediate",
+    "subject": "ai-tech",
+    "source": "114-sample",
+    "stem": "下列何者為機器學習模型在業界部署的主要趨勢？",
+    "options": [
+      {
+        "key": "A",
+        "text": "越來越多地採用自動化機器學習（AutoML）技術"
+      },
+      {
+        "key": "B",
+        "text": "轉向使用更簡單的機器學習算法"
+      },
+      {
+        "key": "C",
+        "text": "基於雲的機器學習平台的使用率下降"
+      },
+      {
+        "key": "D",
+        "text": "依賴手動超參數調整進行模型優化"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT1-smp-Q006",
+    "level": "intermediate",
+    "subject": "ai-tech",
+    "source": "114-sample",
+    "stem": "下列何者「最適合」使用迴歸（Regression）模型進行預測？",
+    "options": [
+      {
+        "key": "A",
+        "text": "根據顧客的購買行為，預測他最可能加入購物車的商品類別"
+      },
+      {
+        "key": "B",
+        "text": "根據病患的症狀與病史，判斷其可能患有的疾病類別"
+      },
+      {
+        "key": "C",
+        "text": "根據電影的特徵與用戶評分，推薦適合的電影類型"
+      },
+      {
+        "key": "D",
+        "text": "根據歷年銷售數據，預測明年某產品的總銷售額"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT1-smp-Q007",
+    "level": "intermediate",
+    "subject": "ai-tech",
+    "source": "114-sample",
+    "stem": "企業在生成式AI 導入中，可選擇下列哪一種模型壓縮（Model Compression）技術以減少記憶體使用？",
+    "options": [
+      {
+        "key": "A",
+        "text": "參數剪枝"
+      },
+      {
+        "key": "B",
+        "text": "增加訓練數據量"
+      },
+      {
+        "key": "C",
+        "text": "增加模型層數"
+      },
+      {
+        "key": "D",
+        "text": "使用更高維數據"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT1-smp-Q008",
+    "level": "intermediate",
+    "subject": "ai-tech",
+    "source": "114-sample",
+    "stem": "供應鏈攻擊（Supply Chain Attacks）如何影響企業內部AI 系統安全？",
+    "options": [
+      {
+        "key": "A",
+        "text": "供應鏈攻擊的常見狀況，包括員工因釣魚郵件而被盜取帳號密碼"
+      },
+      {
+        "key": "B",
+        "text": "AI 系統依賴的第三方開源模型或數據可能被植入惡意內容"
+      },
+      {
+        "key": "C",
+        "text": "AI 系統只會受到DDoS 攻擊影響，不會有供應鏈風險"
+      },
+      {
+        "key": "D",
+        "text": "供應鏈攻擊僅影響硬體層級、不影響AI 模型"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT1-smp-Q009",
+    "level": "intermediate",
+    "subject": "ai-tech",
+    "source": "114-sample",
+    "stem": "下列何者為自然語言處理（NLP）中的詞嵌入技術，能將文字轉換為向量以利機器學習處理？",
+    "options": [
+      {
+        "key": "A",
+        "text": "TF-IDF"
+      },
+      {
+        "key": "B",
+        "text": "Word2Vec"
+      },
+      {
+        "key": "C",
+        "text": "Stop Words"
+      },
+      {
+        "key": "D",
+        "text": "Bag-of-Words"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT1-smp-Q010",
+    "level": "intermediate",
+    "subject": "ai-tech",
+    "source": "114-sample",
+    "stem": "在多模態學習中，早期融合（Early Fusion）方法的主要特徵為何？",
+    "options": [
+      {
+        "key": "A",
+        "text": "將不同模態資料的輸出結果進行決策合併"
+      },
+      {
+        "key": "B",
+        "text": "在模型輸入階段或特徵提取階段整合不同模態資料"
+      },
+      {
+        "key": "C",
+        "text": "僅處理單一來源的資料輸入"
+      },
+      {
+        "key": "D",
+        "text": "利用注意力機制在深層隱藏層進行語意比對與融合"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT1-smp-Q011",
+    "level": "intermediate",
+    "subject": "ai-tech",
+    "source": "114-sample",
+    "stem": "下列哪項技術最有助於強化醫療多模態 AI 系統在處理影像與文本數據時的整合能力？",
+    "options": [
+      {
+        "key": "A",
+        "text": "利用預先定義的規則產生診斷結果"
+      },
+      {
+        "key": "B",
+        "text": "僅使用CNN 架構同時處理影像與文字資訊"
+      },
+      {
+        "key": "C",
+        "text": "利用單一模態資料建立通用醫療模型"
+      },
+      {
+        "key": "D",
+        "text": "採用Transformer 架構整合醫療影像與臨床文本資訊"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT1-smp-Q012",
+    "level": "intermediate",
+    "subject": "ai-tech",
+    "source": "114-sample",
+    "stem": "某線上音樂平台希望根據用戶的聽歌與查詢行為，將用戶劃分為不同的類型。若事前沒有定義用戶類型，下列哪一種模型最適合用於此任務？",
+    "options": [
+      {
+        "key": "A",
+        "text": "邏輯迴歸（Logistic Regression）"
+      },
+      {
+        "key": "B",
+        "text": "決策樹（Decision Tree）"
+      },
+      {
+        "key": "C",
+        "text": "基於密度之含噪空間聚類法（DBSCAN）"
+      },
+      {
+        "key": "D",
+        "text": "線性迴歸（Linear Regression）"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT1-smp-Q013",
+    "level": "intermediate",
+    "subject": "ai-tech",
+    "source": "114-sample",
+    "stem": "在訓練模型時，若數據中出現特徵尺度差異極大（例如：年齡為 0–100、收入為 0–1,000,000），容易導致模型偏向特定特徵。為提升模型效能與穩定性，以下哪一種預處理方式最能有效解決此問題？",
+    "options": [
+      {
+        "key": "A",
+        "text": "移除尺度較小的欄位以避免對模型影響過低"
+      },
+      {
+        "key": "B",
+        "text": "對所有特徵進行Z-score 標準化（Standardization）"
+      },
+      {
+        "key": "C",
+        "text": "將特徵縮放至0–1 區間進行最小-最大正規化（Min-Max Normalization）"
+      },
+      {
+        "key": "D",
+        "text": "對所有數值欄位加上常數使其不為零"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "tags": []
+  },
+  {
+    "id": "IT1-smp-Q014",
+    "level": "intermediate",
+    "subject": "ai-tech",
+    "source": "114-sample",
+    "stem": "某企業即將部署AI 模型至現有營運系統，進入系統整合測試階段。測試工程師需確認所有模組在實際環境中能正確協同運作。下列哪項驗證最應優先執行？",
+    "options": [
+      {
+        "key": "A",
+        "text": "確認模型在開發機上訓練集表現是否達標"
+      },
+      {
+        "key": "B",
+        "text": "驗證模型服務與資料平台、前後端介面協同是否正常，資料格式與流程一致性是否維持"
+      },
+      {
+        "key": "C",
+        "text": "檢查開發團隊提交程式碼時是否有依照Git commit message 規範"
+      },
+      {
+        "key": "D",
+        "text": "審閱模型報告與API 文件的格式是否符合交付標準"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "tags": []
   }
 ]

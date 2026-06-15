@@ -45,6 +45,7 @@ QNUM_RE = re.compile(r"^(\d{1,3})[\.\．、]?[\s　]+(.*)")
 # next line, so the trailing stem is optional.
 ANS_QNUM_RE = re.compile(r"^([ABCDＡＢＣＤ])[\s　]+(\d{1,3})[\.\．、]?[\s　]*(.*)$")
 OPT_RE = re.compile(r"^[\(（]\s*([ABCDＡＢＣＤ])\s*[\)）]\s*(.*)")
+NUM_RE = re.compile(r"^\d{1,2}$")  # sample 樣題: a bare question-number line
 IMG_MARKERS = ("附圖", "如下圖", "如圖", "下圖", "示意圖", "請參考圖", "下表所示之圖")
 HEADER_PAT = re.compile(
     r"^(\d+\s*$|114\s*年|第[一二三四五六七八九十\d]+科|考試日期|試題公告|第\s*\d+\s*頁|"
@@ -175,6 +176,60 @@ def extract_official(subject):
             for i, q in enumerate(parsed)], parsed, dropped
 
 
+def _sample_chrome(line: str) -> bool:
+    return (
+        line.startswith("iPAS")
+        or line.startswith("(樣題")
+        or line.startswith("（樣題")
+        or line.startswith("題號")
+        or line in ("題目", "答案")
+        or bool(re.match(r"^\d{3}\.\d{2}", line))  # "114.09 版"
+    )
+
+
+def parse_sample(text: str):
+    """Sample 樣題 format: a bare number line, then a bare answer letter, then the
+    stem, then (A)-(D). Page numbers are also bare digits, but are NOT followed by
+    an answer letter — that is how we tell a real question start apart."""
+    lines = [l.strip() for l in text.splitlines() if l.strip()]
+    n = len(lines)
+
+    def is_qstart(j):
+        return j + 1 < n and NUM_RE.match(lines[j]) and ANS_RE.match(lines[j + 1])
+
+    questions, dropped = [], []
+    i = 0
+    while i < n:
+        if not is_qstart(i):
+            i += 1
+            continue
+        num, ans = int(lines[i]), norm_letter(lines[i + 1])
+        i += 2
+        stem, options, cur = "", {}, None
+        while i < n:
+            l = lines[i]
+            if is_qstart(i):
+                break
+            if _sample_chrome(l) or NUM_RE.match(l):  # column header / stray page number
+                i += 1
+                continue
+            m = OPT_RE.match(l)
+            if m:
+                cur = norm_letter(m.group(1))
+                options[cur] = m.group(2).strip()
+            elif cur:
+                options[cur] = smart_join(options[cur], l)
+            else:
+                stem = smart_join(stem, l)
+            i += 1
+        has_img = any(mk in stem for mk in IMG_MARKERS)
+        if len(options) == 4 and ans and not has_img:
+            questions.append({"num": num, "answer": ans, "stem": stem.strip(), "options": options})
+        else:
+            dropped.append((num, "img" if has_img else "incomplete"))
+    return questions, dropped
+
+
 def split_sample_sections(text: str):
     """The sample PDF concatenates 3 subjects under ◆ 科目一/二/三 headers."""
     markers = [("科目一", "ai-tech"), ("科目二", "big-data"), ("科目三", "ml-tech")]
@@ -204,33 +259,33 @@ def extract_sample():
     doc = fitz.open(SRC_DIR / SAMPLE_PDF)
     text = "\n".join(p.get_text() for p in doc)
     sections = split_sample_sections(text)
-    out = {}
+    out, drops = {}, {}
     for subject, body in sections.items():
-        parsed, _ = parse(body)
+        parsed, dropped = parse_sample(body)
         out[subject] = [to_question(q, subject, "intermediate", "114-sample", i + 1)
                         for i, q in enumerate(parsed)]
-    return out
+        drops[subject] = dropped
+    return out, drops
 
 
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    sample = extract_sample()
+    sample, sample_drops = extract_sample()
     summary = []
     for subject, (title, _) in SUBJECTS.items():
         official, parsed, dropped = extract_official(subject)
         smp = sample.get(subject, [])
-        nums = [p["num"] for p in parsed]
         all_q = official + smp
         sub_dir = OUT_DIR / subject
         sub_dir.mkdir(parents=True, exist_ok=True)
         (sub_dir / "questions.json").write_text(
             json.dumps(all_q, ensure_ascii=False, indent=2), encoding="utf-8"
         )
-        summary.append((subject, title, len(official), len(smp), max(nums), dropped))
+        summary.append((subject, title, len(official), len(smp), dropped, sample_drops.get(subject, [])))
 
-    print("subject     | official | sample | maxnum | dropped (num,reason)")
-    for subject, title, no, ns, mx, dropped in summary:
-        print(f"{subject:11s} | {no:8d} | {ns:6d} | {mx:6d} | {dropped}   {title}")
+    print("subject     | official | sample | off-dropped | sample-dropped")
+    for subject, title, no, ns, dropped, sdrop in summary:
+        print(f"{subject:11s} | {no:8d} | {ns:6d} | {dropped} | {sdrop}   {title}")
 
 
 if __name__ == "__main__":
