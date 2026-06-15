@@ -1548,19 +1548,19 @@
     "options": [
       {
         "key": "A",
-        "text": "c → a → b → d"
+        "text": "Momentum"
       },
       {
         "key": "B",
-        "text": "a → c → b → d"
+        "text": "Adagrad"
       },
       {
         "key": "C",
-        "text": "c → b → a → d"
+        "text": "Adam"
       },
       {
         "key": "D",
-        "text": "b → a → c → d"
+        "text": "SGD"
       }
     ],
     "answer": "B",

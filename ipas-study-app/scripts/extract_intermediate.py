@@ -210,6 +210,8 @@ def parse_sample(text: str):
             l = lines[i]
             if is_qstart(i):
                 break
+            if ANS_RE.match(l) and cur is not None:
+                break  # bare answer letter after options => a numberless next question
             if _sample_chrome(l) or NUM_RE.match(l):  # column header / stray page number
                 i += 1
                 continue
