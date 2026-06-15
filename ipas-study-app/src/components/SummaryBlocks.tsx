@@ -19,7 +19,7 @@ export function SummaryBlocks({ blocks }: { blocks: SummaryBlock[] }) {
                 {b.text}
               </h2>
             )
-          return <h3 key={i} className="font-semibold text-gray-700 mt-4 mb-0.5">{b.text}</h3>
+          return <h3 key={i} id={`sec-${i}`} className="scroll-mt-20 font-semibold text-gray-700 mt-4 mb-0.5">{b.text}</h3>
         }
         if (b.type === 'keypoints')
           return (
