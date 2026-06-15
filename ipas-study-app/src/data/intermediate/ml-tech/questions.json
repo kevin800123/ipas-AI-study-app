@@ -25,7 +25,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習數學基礎"
+    ]
   },
   {
     "id": "IT3-off-Q002",
@@ -53,7 +55,9 @@
     ],
     "answer": "C",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習演算法"
+    ]
   },
   {
     "id": "IT3-off-Q003",
@@ -81,7 +85,9 @@
     ],
     "answer": "C",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習數學基礎"
+    ]
   },
   {
     "id": "IT3-off-Q004",
@@ -109,7 +115,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習演算法"
+    ]
   },
   {
     "id": "IT3-off-Q005",
@@ -137,7 +145,10 @@
     ],
     "answer": "A",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "深度學習",
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q006",
@@ -165,7 +176,9 @@
     ],
     "answer": "C",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "深度學習"
+    ]
   },
   {
     "id": "IT3-off-Q007",
@@ -193,7 +206,9 @@
     ],
     "answer": "A",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習演算法"
+    ]
   },
   {
     "id": "IT3-off-Q008",
@@ -221,7 +236,10 @@
     ],
     "answer": "D",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習演算法",
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q009",
@@ -249,7 +267,10 @@
     ],
     "answer": "A",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估",
+      "機器學習演算法"
+    ]
   },
   {
     "id": "IT3-off-Q010",
@@ -277,7 +298,9 @@
     ],
     "answer": "C",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q011",
@@ -305,7 +328,9 @@
     ],
     "answer": "D",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q012",
@@ -333,7 +358,9 @@
     ],
     "answer": "C",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q013",
@@ -361,7 +388,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習治理與安全"
+    ]
   },
   {
     "id": "IT3-off-Q014",
@@ -389,7 +418,9 @@
     ],
     "answer": "C",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "深度學習"
+    ]
   },
   {
     "id": "IT3-off-Q015",
@@ -417,7 +448,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q016",
@@ -445,7 +478,9 @@
     ],
     "answer": "A",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q017",
@@ -473,7 +508,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "深度學習"
+    ]
   },
   {
     "id": "IT3-off-Q018",
@@ -501,7 +538,9 @@
     ],
     "answer": "A",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習演算法"
+    ]
   },
   {
     "id": "IT3-off-Q019",
@@ -529,7 +568,9 @@
     ],
     "answer": "C",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q020",
@@ -557,7 +598,9 @@
     ],
     "answer": "C",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q021",
@@ -585,7 +628,9 @@
     ],
     "answer": "C",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "深度學習"
+    ]
   },
   {
     "id": "IT3-off-Q022",
@@ -613,7 +658,10 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習數學基礎",
+      "機器學習演算法"
+    ]
   },
   {
     "id": "IT3-off-Q023",
@@ -641,7 +689,10 @@
     ],
     "answer": "A",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習數學基礎",
+      "機器學習演算法"
+    ]
   },
   {
     "id": "IT3-off-Q024",
@@ -669,7 +720,9 @@
     ],
     "answer": "C",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習演算法"
+    ]
   },
   {
     "id": "IT3-off-Q025",
@@ -697,7 +750,9 @@
     ],
     "answer": "A",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q026",
@@ -725,7 +780,10 @@
     ],
     "answer": "D",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習演算法",
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q027",
@@ -753,7 +811,10 @@
     ],
     "answer": "D",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "深度學習",
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q028",
@@ -781,7 +842,9 @@
     ],
     "answer": "C",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q029",
@@ -809,7 +872,10 @@
     ],
     "answer": "D",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習演算法",
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q030",
@@ -837,7 +903,9 @@
     ],
     "answer": "C",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q031",
@@ -865,7 +933,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q032",
@@ -893,7 +963,10 @@
     ],
     "answer": "D",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習演算法",
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q033",
@@ -921,7 +994,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "綜合應用"
+    ]
   },
   {
     "id": "IT3-off-Q034",
@@ -949,7 +1024,9 @@
     ],
     "answer": "D",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習演算法"
+    ]
   },
   {
     "id": "IT3-off-Q035",
@@ -977,7 +1054,9 @@
     ],
     "answer": "A",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-off-Q036",
@@ -1005,7 +1084,9 @@
     ],
     "answer": "D",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習治理與安全"
+    ]
   },
   {
     "id": "IT3-off-Q037",
@@ -1033,7 +1114,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習治理與安全"
+    ]
   },
   {
     "id": "IT3-off-Q038",
@@ -1061,7 +1144,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "深度學習"
+    ]
   },
   {
     "id": "IT3-off-Q039",
@@ -1089,7 +1174,9 @@
     ],
     "answer": "A",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "深度學習"
+    ]
   },
   {
     "id": "IT3-off-Q040",
@@ -1117,7 +1204,9 @@
     ],
     "answer": "D",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "深度學習"
+    ]
   },
   {
     "id": "IT3-off-Q041",
@@ -1145,7 +1234,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "深度學習"
+    ]
   },
   {
     "id": "IT3-off-Q042",
@@ -1173,7 +1264,10 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習演算法",
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-smp-Q001",
@@ -1201,7 +1295,9 @@
     ],
     "answer": "A",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習數學基礎"
+    ]
   },
   {
     "id": "IT3-smp-Q002",
@@ -1229,7 +1325,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "深度學習"
+    ]
   },
   {
     "id": "IT3-smp-Q003",
@@ -1257,7 +1355,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習演算法"
+    ]
   },
   {
     "id": "IT3-smp-Q004",
@@ -1285,7 +1385,9 @@
     ],
     "answer": "A",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-smp-Q005",
@@ -1313,7 +1415,9 @@
     ],
     "answer": "A",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習演算法"
+    ]
   },
   {
     "id": "IT3-smp-Q006",
@@ -1341,7 +1445,9 @@
     ],
     "answer": "C",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "深度學習"
+    ]
   },
   {
     "id": "IT3-smp-Q007",
@@ -1369,7 +1475,9 @@
     ],
     "answer": "C",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習演算法"
+    ]
   },
   {
     "id": "IT3-smp-Q008",
@@ -1397,7 +1505,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習數學基礎"
+    ]
   },
   {
     "id": "IT3-smp-Q009",
@@ -1425,7 +1535,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-smp-Q010",
@@ -1453,7 +1565,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-smp-Q011",
@@ -1481,7 +1595,9 @@
     ],
     "answer": "D",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-smp-Q012",
@@ -1509,7 +1625,9 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習治理與安全"
+    ]
   },
   {
     "id": "IT3-smp-Q013",
@@ -1537,7 +1655,10 @@
     ],
     "answer": "A",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "機器學習演算法",
+      "建模流程與評估"
+    ]
   },
   {
     "id": "IT3-smp-Q014",
@@ -1565,6 +1686,8 @@
     ],
     "answer": "B",
     "explanation": "",
-    "tags": []
+    "tags": [
+      "深度學習"
+    ]
   }
 ]

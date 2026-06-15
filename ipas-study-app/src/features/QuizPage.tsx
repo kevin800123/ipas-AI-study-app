@@ -1,22 +1,26 @@
 import { useMemo, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom'
 import type { OptionKey, QuizMode } from '../types'
 import { getSubject, getQuestions } from '../data/subjects'
 import { takeQuestions, shuffleOptions } from '../lib/quizBuilder'
+import { questionsByTag } from '../lib/weakness'
 import { scoreQuiz } from '../lib/scoreQuiz'
 import { recordQuiz, addWrongQuestions } from '../store/progress'
 
 export function QuizPage() {
   const { subjectId = '', mode = 'practice' } = useParams()
+  const [params] = useSearchParams()
+  const tag = params.get('tag') ?? ''
   const quizMode = (mode === 'mock' ? 'mock' : 'practice') as QuizMode
   const navigate = useNavigate()
   const subject = getSubject(subjectId)
   const questions = useMemo(() => {
-    const pool = getQuestions(subjectId)
+    let pool = getQuestions(subjectId)
+    if (tag) pool = questionsByTag(pool, tag)
     const n = quizMode === 'mock' ? (subject?.examFormat.questionCount ?? pool.length) : 10
     const picked = takeQuestions(pool, n)
     return quizMode === 'mock' ? picked.map((q) => shuffleOptions(q)) : picked
-  }, [subjectId, quizMode, subject])
+  }, [subjectId, quizMode, subject, tag])
 
   const [answers, setAnswers] = useState<Record<string, OptionKey | null>>({})
   const [revealed, setRevealed] = useState<Record<string, boolean>>({})
@@ -44,10 +48,13 @@ export function QuizPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-lg font-medium">{subject.title}・{quizMode === 'mock' ? '模擬考' : '練習'}</h1>
+      <h1 className="text-lg font-medium">{subject.title}・{quizMode === 'mock' ? '模擬考' : '練習'}{tag && `・${tag}`}</h1>
       {quizMode === 'practice' && (
-        <p className="text-xs text-gray-500">練習模式：作答後立即顯示正解與詳解。</p>
+        <p className="text-xs text-gray-500">
+          {tag ? `弱點章節練習：${tag}。` : '練習模式：'}作答後立即顯示正解與詳解。
+        </p>
       )}
+      {questions.length === 0 && <p className="text-sm text-gray-500">此章節暫無可練習的題目。</p>}
       {questions.map((q, idx) => (
         <div key={q.id} className="border rounded-lg p-4 space-y-2">
           <div className="text-sm font-medium">{idx + 1}. {q.stem}</div>
