@@ -5,7 +5,9 @@ import { getSummaries } from '../data/subjects'
 import { getSubjectProgress, toggleSummaryRead } from '../store/progress'
 import { SummaryBlocks, isSectionHeading } from '../components/SummaryBlocks'
 
-const SUB_RE = /^\d{1,2}\.\s/ // numbered sub-section titles (1. 2. 3.) — the TOC's second level
+const SUB_RE = /^\d{1,2}\.\s/         // numbered sub-section (paged: 2nd level)
+const LOWER_STEP = /^[a-z][.、]/       // a. b. c. — too granular for any TOC
+const TOPIC_RE = /^(（|\d{1,2}\.\s)/  // （N） or numbered — non-paged TOC top level
 
 interface Section { title: string; blocks: SummaryBlock[] }
 
@@ -24,9 +26,6 @@ function groupSections(blocks: SummaryBlock[]): Section[] {
   }
   if (cur.blocks.length) sections.push(cur)
 
-  // Chapters often open with a brief overview that repeats each section title before
-  // the real content. Fold those earlier duplicate "preview" sections into 概述 and
-  // keep the last (full) occurrence of each section.
   const last = new Map<string, number>()
   sections.forEach((s, i) => last.set(normTitle(s.title), i))
   const out: Section[] = []
@@ -38,10 +37,10 @@ function groupSections(blocks: SummaryBlock[]): Section[] {
   return out
 }
 
-function subHeadings(blocks: SummaryBlock[]) {
+function headingsOf(blocks: SummaryBlock[], filter: (t: string) => boolean) {
   return blocks
     .map((b, idx) => ({ b, idx }))
-    .filter(({ b }) => b.type === 'heading' && !isSectionHeading(b) && SUB_RE.test(b.text))
+    .filter(({ b }) => b.type === 'heading' && filter((b as { text: string }).text))
     .map(({ b, idx }) => ({ idx, text: b.type === 'heading' ? b.text : '' }))
 }
 
@@ -50,6 +49,7 @@ export function SummaryPage() {
   const chapter = getSummaries(subjectId).find((c) => c.id === chapterId)
   const [read, setRead] = useState(getSubjectProgress(subjectId).summariesRead.includes(chapterId))
   const [active, setActive] = useState(0)
+  const [tocOpen, setTocOpen] = useState(false)
 
   useEffect(() => { setActive(0) }, [chapterId])
   useEffect(() => { window.scrollTo({ top: 0 }) }, [active, chapterId])
@@ -60,13 +60,18 @@ export function SummaryPage() {
   const paged = sections.length > 1
   const idx = Math.min(active, sections.length - 1)
   const sec = sections[idx]
-  const subs = paged ? subHeadings(sec.blocks) : []
+  const subs = paged ? headingsOf(sec.blocks, (t) => SUB_RE.test(t) && !isSectionHeading({ type: 'heading', text: t })) : []
+
+  // non-paged: anchor TOC of the chapter's own headings (skip a./b. steps)
+  const anchor = paged ? [] : headingsOf(chapter.blocks, (t) => !LOWER_STEP.test(t))
+    .map((h) => ({ ...h, level: TOPIC_RE.test(h.text) ? 1 : 2 }))
+  const showSidebar = paged || anchor.length >= 3
 
   function jump(i: number) {
     document.getElementById(`sec-${i}`)?.scrollIntoView({ block: 'start' })
   }
 
-  const tocSidebar = (
+  const sidebar = paged ? (
     <nav className="text-sm">
       {sections.map((s, si) => (
         <div key={si}>
@@ -78,15 +83,21 @@ export function SummaryPage() {
             <ul className="ml-1 mb-1 border-l border-gray-200 space-y-1">
               {subs.map((h) => (
                 <li key={h.idx}>
-                  <button onClick={() => jump(h.idx)}
-                    className="block w-full text-left truncate text-xs text-gray-500 hover:text-sky-700 pl-3">
-                    {h.text}
-                  </button>
+                  <button onClick={() => jump(h.idx)} className="block w-full text-left truncate text-xs text-gray-500 hover:text-sky-700 pl-3">{h.text}</button>
                 </li>
               ))}
             </ul>
           )}
         </div>
+      ))}
+    </nav>
+  ) : (
+    <nav className="text-sm space-y-1">
+      {anchor.map((h) => (
+        <button key={h.idx} onClick={() => jump(h.idx)}
+          className={`block w-full text-left truncate hover:text-sky-700 ${h.level === 1 ? 'text-gray-700' : 'text-xs text-gray-500 pl-3 border-l border-gray-200'}`}>
+          {h.text}
+        </button>
       ))}
     </nav>
   )
@@ -98,24 +109,30 @@ export function SummaryPage() {
         <span className="text-gray-400 mr-2">{chapter.chapter}</span>{chapter.title}
       </h1>
 
+      {/* mobile TOC: paged → section select; non-paged → collapsible anchor list */}
       {paged && (
         <div className="lg:hidden space-y-1">
-          <select value={idx} onChange={(e) => setActive(Number(e.target.value))}
-            className="w-full border rounded p-2 text-sm bg-white">
+          <select value={idx} onChange={(e) => setActive(Number(e.target.value))} className="w-full border rounded p-2 text-sm bg-white">
             {sections.map((s, si) => <option key={si} value={si}>{si + 1}. {s.title}</option>)}
           </select>
           <div className="text-xs text-gray-400 text-right">第 {idx + 1} / {sections.length} 節</div>
         </div>
       )}
+      {!paged && anchor.length >= 3 && (
+        <nav className="lg:hidden rounded-lg border bg-gray-50">
+          <button onClick={() => setTocOpen((o) => !o)} className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-gray-600">
+            <span>本章目錄（{anchor.length}）</span><span className="text-gray-400">{tocOpen ? '收合 ▾' : '展開 ▸'}</span>
+          </button>
+          {tocOpen && <div className="px-3 pb-3 border-t pt-2">{sidebar}</div>}
+        </nav>
+      )}
 
-      <article><SummaryBlocks blocks={sec.blocks} /></article>
+      <article><SummaryBlocks blocks={paged ? sec.blocks : chapter.blocks} /></article>
 
       {paged && (
         <div className="flex justify-between gap-2 pt-1">
-          <button disabled={idx === 0} onClick={() => setActive(idx - 1)}
-            className="border rounded px-3 py-2 text-sm disabled:opacity-40">‹ 上一節</button>
-          <button disabled={idx === sections.length - 1} onClick={() => setActive(idx + 1)}
-            className="border rounded px-3 py-2 text-sm disabled:opacity-40">下一節 ›</button>
+          <button disabled={idx === 0} onClick={() => setActive(idx - 1)} className="border rounded px-3 py-2 text-sm disabled:opacity-40">‹ 上一節</button>
+          <button disabled={idx === sections.length - 1} onClick={() => setActive(idx + 1)} className="border rounded px-3 py-2 text-sm disabled:opacity-40">下一節 ›</button>
         </div>
       )}
 
@@ -126,13 +143,13 @@ export function SummaryPage() {
     </div>
   )
 
-  if (!paged) return body
+  if (!showSidebar) return body
 
   return (
     <div className="lg:flex lg:gap-8 lg:items-start">
       <aside className="hidden lg:block w-60 shrink-0 lg:sticky lg:top-16 self-start max-h-[calc(100vh-5rem)] overflow-y-auto">
         <div className="text-sm font-medium text-gray-500 mb-2">本章目錄</div>
-        {tocSidebar}
+        {sidebar}
       </aside>
       <div className="flex-1 min-w-0">{body}</div>
     </div>
