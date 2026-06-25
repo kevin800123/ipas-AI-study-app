@@ -86,13 +86,42 @@ def smart_join(acc, line):
     return acc + line
 
 
+SENT_RE = re.compile(r"[^。！？]*[。！？]")
+
+
+def split_paragraph(text, max_len=140):
+    """The PDFs merge several source paragraphs into one wall of text. Break a long
+    paragraph at sentence boundaries (。！？) into ~2-3-sentence chunks for readability."""
+    text = text.strip()
+    if len(text) <= max_len:
+        return [text]
+    sents = SENT_RE.findall(text)
+    rest = text[sum(len(s) for s in sents):].strip()
+    if rest:
+        sents.append(rest)
+    if not sents:
+        return [text]
+    paras, cur = [], ""
+    for s in sents:
+        if cur and len(cur) + len(s) > max_len:
+            paras.append(cur)
+            cur = s
+        else:
+            cur += s
+    if cur:
+        paras.append(cur)
+    return paras
+
+
 def build_blocks(lines):
     blocks, para, bullets, mode = [], "", [], None
 
     def flush():
         nonlocal para, bullets, mode
         if para.strip():
-            blocks.append({"type": "text", "content": para.strip()})
+            for p in split_paragraph(para):
+                if p.strip():
+                    blocks.append({"type": "text", "content": p.strip()})
         if bullets:
             blocks.append({"type": "keypoints", "items": [b for b in bullets if b]})
         para, bullets, mode = "", [], None
@@ -109,7 +138,9 @@ def build_blocks(lines):
             if mode == "bullet" and not item:
                 continue
             if para.strip():
-                blocks.append({"type": "text", "content": para.strip()})
+                for p in split_paragraph(para):
+                    if p.strip():
+                        blocks.append({"type": "text", "content": p.strip()})
                 para = ""
             bullets.append(item)
             mode = "bullet"
