@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { NavBar } from './components/NavBar'
 import { HomePage } from './features/HomePage'
 import { SubjectPage } from './features/SubjectPage'
@@ -12,10 +12,12 @@ import { useViewMode } from './store/viewMode'
 
 export default function App() {
   const web = useViewMode() === 'web'
+  const onSummary = useLocation().pathname.includes('/summary/')
+  const maxW = onSummary ? 'max-w-6xl' : web ? 'max-w-5xl' : 'max-w-2xl'
   return (
     <div className={web ? 'min-h-screen' : 'min-h-screen md:flex'} data-view={web ? 'web' : 'app'}>
       <NavBar />
-      <main className={`flex-1 mx-auto p-4 ${web ? 'max-w-5xl pb-10' : 'max-w-2xl pb-20 md:pb-4'}`}>
+      <main className={`flex-1 mx-auto p-4 ${maxW} ${web ? 'pb-10' : 'pb-20 md:pb-4'}`}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/subject/:subjectId" element={<SubjectPage />} />

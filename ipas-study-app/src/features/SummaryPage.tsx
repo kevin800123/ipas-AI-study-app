@@ -1,92 +1,123 @@
 import { useParams, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import type { SummaryBlock } from '../types'
 import { getSummaries } from '../data/subjects'
 import { getSubjectProgress, toggleSummaryRead } from '../store/progress'
 import { SummaryBlocks, isSectionHeading } from '../components/SummaryBlocks'
-import { useViewMode } from '../store/viewMode'
 
-const STEP_RE = /^[a-z][.、]/ // lowercase step labels (a. b. c.) — too granular for the TOC
+const SUB_RE = /^\d{1,2}\.\s/ // numbered sub-section titles (1. 2. 3.) — the TOC's second level
+
+interface Section { title: string; blocks: SummaryBlock[] }
+
+const normTitle = (t: string) => t.replace(/\s+/g, '')
+
+function groupSections(blocks: SummaryBlock[]): Section[] {
+  const sections: Section[] = []
+  let cur: Section = { title: '概述', blocks: [] }
+  for (const b of blocks) {
+    if (isSectionHeading(b)) {
+      if (cur.blocks.length) sections.push(cur)
+      cur = { title: b.type === 'heading' ? b.text : '', blocks: [b] }
+    } else {
+      cur.blocks.push(b)
+    }
+  }
+  if (cur.blocks.length) sections.push(cur)
+
+  // Chapters often open with a brief overview that repeats each section title before
+  // the real content. Fold those earlier duplicate "preview" sections into 概述 and
+  // keep the last (full) occurrence of each section.
+  const last = new Map<string, number>()
+  sections.forEach((s, i) => last.set(normTitle(s.title), i))
+  const out: Section[] = []
+  for (let i = 0; i < sections.length; i++) {
+    const isPreview = i < (last.get(normTitle(sections[i].title)) ?? i)
+    if (isPreview && out.length) out[0].blocks = out[0].blocks.concat(sections[i].blocks)
+    else out.push(sections[i])
+  }
+  return out
+}
+
+function subHeadings(blocks: SummaryBlock[]) {
+  return blocks
+    .map((b, idx) => ({ b, idx }))
+    .filter(({ b }) => b.type === 'heading' && !isSectionHeading(b) && SUB_RE.test(b.text))
+    .map(({ b, idx }) => ({ idx, text: b.type === 'heading' ? b.text : '' }))
+}
 
 export function SummaryPage() {
   const { subjectId = '', chapterId = '' } = useParams()
   const chapter = getSummaries(subjectId).find((c) => c.id === chapterId)
-  const web = useViewMode() === 'web'
   const [read, setRead] = useState(getSubjectProgress(subjectId).summariesRead.includes(chapterId))
-  const [tocOpen, setTocOpen] = useState(false)
-  const [activeId, setActiveId] = useState<number | null>(null)
+  const [active, setActive] = useState(0)
 
-  // scroll-spy: highlight the last TOC heading whose top has scrolled past ~100px
-  useEffect(() => {
-    if (!chapter) return
-    const idxs = chapter.blocks
-      .map((b, i) => ({ b, i }))
-      .filter(({ b }) => b.type === 'heading' && !STEP_RE.test(b.text))
-      .map(({ i }) => i)
-    const onScroll = () => {
-      let cur: number | null = null
-      for (const i of idxs) {
-        const el = document.getElementById(`sec-${i}`)
-        if (el && el.getBoundingClientRect().top <= 100) cur = i
-      }
-      setActiveId(cur)
-    }
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chapterId])
+  useEffect(() => { setActive(0) }, [chapterId])
+  useEffect(() => { window.scrollTo({ top: 0 }) }, [active, chapterId])
 
   if (!chapter) return <p>找不到此章節。</p>
 
-  const toc = chapter.blocks
-    .map((b, i) => ({ b, i }))
-    .filter(({ b }) => b.type === 'heading' && !STEP_RE.test(b.text))
-    .map(({ b, i }) => ({ i, text: b.type === 'heading' ? b.text : '', level: isSectionHeading(b) ? 1 : 2 }))
+  const sections = groupSections(chapter.blocks)
+  const paged = sections.length > 1
+  const idx = Math.min(active, sections.length - 1)
+  const sec = sections[idx]
+  const subs = paged ? subHeadings(sec.blocks) : []
 
   function jump(i: number) {
     document.getElementById(`sec-${i}`)?.scrollIntoView({ block: 'start' })
   }
 
-  const tocItems = (
-    <ul className="space-y-1">
-      {toc.map((t) => {
-        const active = t.i === activeId
-        return (
-          <li key={t.i}>
-            <button onClick={() => jump(t.i)}
-              className={`block w-full text-left truncate hover:text-sky-700 ${
-                t.level === 1
-                  ? 'text-sm font-medium mt-1.5'
-                  : 'text-xs pl-3 border-l'
-              } ${active ? 'text-sky-700 border-sky-400' : t.level === 1 ? 'text-gray-700' : 'text-gray-500 border-gray-200'}`}>
-              {t.text}
-            </button>
-          </li>
-        )
-      })}
-    </ul>
+  const tocSidebar = (
+    <nav className="text-sm">
+      {sections.map((s, si) => (
+        <div key={si}>
+          <button onClick={() => setActive(si)}
+            className={`block w-full text-left py-1 truncate ${si === idx ? 'text-sky-700 font-medium' : 'text-gray-600 hover:text-sky-700'}`}>
+            {s.title}
+          </button>
+          {si === idx && subs.length > 0 && (
+            <ul className="ml-1 mb-1 border-l border-gray-200 space-y-1">
+              {subs.map((h) => (
+                <li key={h.idx}>
+                  <button onClick={() => jump(h.idx)}
+                    className="block w-full text-left truncate text-xs text-gray-500 hover:text-sky-700 pl-3">
+                    {h.text}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
+    </nav>
   )
 
-  const content = (
+  const body = (
     <div className="w-full max-w-2xl mx-auto space-y-5">
       <Link to={`/subject/${subjectId}`} className="text-sm text-gray-500">‹ {chapter.title}</Link>
       <h1 className="text-2xl font-semibold leading-snug">
         <span className="text-gray-400 mr-2">{chapter.chapter}</span>{chapter.title}
       </h1>
 
-      {/* top collapsible TOC — always in app mode; only on narrow screens in web mode */}
-      {toc.length > 1 && (
-        <nav className={`rounded-lg border bg-gray-50 ${web ? 'lg:hidden' : ''}`}>
-          <button onClick={() => setTocOpen((o) => !o)}
-            className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-gray-600">
-            <span>本章目錄（{toc.length}）</span>
-            <span className="text-gray-400">{tocOpen ? '收合 ▾' : '展開 ▸'}</span>
-          </button>
-          {tocOpen && <div className="px-3 pb-3 border-t pt-2">{tocItems}</div>}
-        </nav>
+      {paged && (
+        <div className="lg:hidden space-y-1">
+          <select value={idx} onChange={(e) => setActive(Number(e.target.value))}
+            className="w-full border rounded p-2 text-sm bg-white">
+            {sections.map((s, si) => <option key={si} value={si}>{si + 1}. {s.title}</option>)}
+          </select>
+          <div className="text-xs text-gray-400 text-right">第 {idx + 1} / {sections.length} 節</div>
+        </div>
       )}
 
-      <article><SummaryBlocks blocks={chapter.blocks} /></article>
+      <article><SummaryBlocks blocks={sec.blocks} /></article>
+
+      {paged && (
+        <div className="flex justify-between gap-2 pt-1">
+          <button disabled={idx === 0} onClick={() => setActive(idx - 1)}
+            className="border rounded px-3 py-2 text-sm disabled:opacity-40">‹ 上一節</button>
+          <button disabled={idx === sections.length - 1} onClick={() => setActive(idx + 1)}
+            className="border rounded px-3 py-2 text-sm disabled:opacity-40">下一節 ›</button>
+        </div>
+      )}
 
       <button onClick={() => { toggleSummaryRead(subjectId, chapterId); setRead((r) => !r) }}
         className={`w-full rounded py-2.5 text-sm ${read ? 'bg-green-100 text-green-700' : 'bg-sky-600 text-white'}`}>
@@ -95,18 +126,15 @@ export function SummaryPage() {
     </div>
   )
 
-  if (!web) return content
+  if (!paged) return body
 
-  // web mode: sticky two-level sidebar TOC on the left for wide screens
   return (
     <div className="lg:flex lg:gap-8 lg:items-start">
-      {toc.length > 0 && (
-        <aside className="hidden lg:block w-56 shrink-0 lg:sticky lg:top-16 self-start max-h-[calc(100vh-5rem)] overflow-y-auto">
-          <div className="text-sm font-medium text-gray-500 mb-2">本章目錄</div>
-          {tocItems}
-        </aside>
-      )}
-      <div className="flex-1 min-w-0">{content}</div>
+      <aside className="hidden lg:block w-60 shrink-0 lg:sticky lg:top-16 self-start max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <div className="text-sm font-medium text-gray-500 mb-2">本章目錄</div>
+        {tocSidebar}
+      </aside>
+      <div className="flex-1 min-w-0">{body}</div>
     </div>
   )
 }
