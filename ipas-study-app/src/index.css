@@ -2,8 +2,43 @@
 
 @layer base {
   *, ::before, ::after { border-color: var(--color-gray-200, oklch(0.928 0.006 264.531)); }
-  /* Enlarge everything proportionally: all Tailwind text/spacing is rem-based,
-     so bumping the root size zooms the whole UI for readability. */
-  html { color-scheme: light; font-size: 18px; }
   body { background-color: #ffffff; color: #111827; }
 }
+
+/*
+ * Dark mode — toggled by the settings store adding `.dark` to <html>.
+ * Rather than sprinkling dark: variants over every component, we remap the
+ * handful of light surface/text utilities the app actually uses. `.dark .x`
+ * (two classes) outranks the base `.x` utility, so these win in the cascade.
+ */
+.dark body { background-color: #0b1220; color: #e2e8f0; }
+.dark *, .dark ::before, .dark ::after { border-color: #334155; }
+
+.dark .bg-white { background-color: #111a2e; }
+.dark .bg-gray-50 { background-color: #0f1729; }
+.dark .bg-gray-100 { background-color: #1e293b; }
+.dark .bg-gray-200 { background-color: #334155; }
+
+.dark .text-gray-800 { color: #e2e8f0; }
+.dark .text-gray-700 { color: #cbd5e1; }
+.dark .text-gray-600 { color: #b6c2d4; }
+.dark .text-gray-500 { color: #94a3b8; }
+.dark .text-gray-400 { color: #74839b; }
+
+/* tinted state backgrounds (selected / correct / wrong / badges) */
+.dark .bg-sky-50 { background-color: #0c2740; }
+.dark .bg-sky-100 { background-color: #0c3a5e; }
+.dark .bg-green-50 { background-color: #06281c; }
+.dark .bg-green-100 { background-color: #0b4332; }
+.dark .bg-red-50 { background-color: #3a1620; }
+.dark .bg-red-100 { background-color: #5e1f29; }
+.dark .bg-amber-100 { background-color: #5a3b12; }
+
+.dark .text-sky-700 { color: #5db4f0; }
+.dark .text-sky-800 { color: #7cc3f2; }
+.dark .text-sky-600 { color: #5db4f0; }
+.dark .text-green-700 { color: #4ade80; }
+.dark .text-green-600 { color: #4ade80; }
+.dark .text-red-700 { color: #f87171; }
+.dark .text-red-500, .dark .text-red-400 { color: #f87171; }
+.dark .text-amber-700 { color: #fbbf24; }

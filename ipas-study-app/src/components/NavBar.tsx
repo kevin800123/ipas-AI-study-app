@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { useViewMode, toggleViewMode } from '../store/viewMode'
+import { useSettings, toggleTheme, stepFont } from '../store/settings'
 
 const items = [
   { to: '/', label: '首頁' },
@@ -10,6 +11,18 @@ const items = [
 
 export function NavBar() {
   const web = useViewMode() === 'web'
+  const { theme } = useSettings()
+
+  const appearance = (
+    <div className="flex items-center justify-center gap-1 shrink-0 py-2 md:border-t">
+      <button onClick={toggleTheme} title="深色 / 淺色模式"
+        className="px-2 py-1 text-sm rounded hover:bg-gray-100">{theme === 'dark' ? '☀️' : '🌙'}</button>
+      <button onClick={() => stepFont(-1)} title="縮小字級"
+        className="px-1.5 py-0.5 text-xs rounded border hover:bg-gray-100">A−</button>
+      <button onClick={() => stepFont(1)} title="放大字級"
+        className="px-1.5 py-0.5 text-sm rounded border hover:bg-gray-100">A＋</button>
+    </div>
+  )
 
   const toggle = (
     <button
@@ -44,6 +57,7 @@ export function NavBar() {
               </NavLink>
             ))}
           </div>
+          {appearance}
           {toggle}
         </div>
       </nav>
@@ -65,6 +79,7 @@ export function NavBar() {
         </NavLink>
       ))}
       {toggle}
+      {appearance}
     </nav>
   )
 }
