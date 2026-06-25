@@ -43,3 +43,4 @@ Thumbs.db
 sp-skills/
 dev-flow-orchestrator/
 .claude/
+__pycache__/

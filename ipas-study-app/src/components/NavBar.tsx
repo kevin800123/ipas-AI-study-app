@@ -4,6 +4,7 @@ import { useViewMode, toggleViewMode } from '../store/viewMode'
 const items = [
   { to: '/', label: '首頁' },
   { to: '/wrong', label: '錯題本' },
+  { to: '/strategy', label: '攻略' },
   { to: '/info', label: '考試資訊' },
 ]
 

@@ -7,6 +7,7 @@ import { QuizPage } from './features/QuizPage'
 import { ResultPage } from './features/ResultPage'
 import { WrongBookPage } from './features/WrongBookPage'
 import { ExamInfoPage } from './features/ExamInfoPage'
+import { StrategyPage } from './features/StrategyPage'
 import { useViewMode } from './store/viewMode'
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/subject/:subjectId/quiz/:mode" element={<QuizPage />} />
           <Route path="/subject/:subjectId/result" element={<ResultPage />} />
           <Route path="/wrong" element={<WrongBookPage />} />
+          <Route path="/strategy" element={<StrategyPage />} />
           <Route path="/info" element={<ExamInfoPage />} />
         </Routes>
       </main>
